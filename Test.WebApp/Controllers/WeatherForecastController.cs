@@ -63,7 +63,7 @@ namespace Test.WebApp.Controllers
 			return Ok();
 		}
 
-        public async Task PatientTransactionListSave(List<patient_payments> transaction, long? createdBy, string transactionKey, decimal capturedAmount, DateTime chargeCreatedOn, bool isChargeCaptured, PayerType payerType = PayerType.Payer)
+        public async Task PatientTransactionListSave(List<patient_payments> transaction, long? createdBy, string transactionKey, decimal capturedAmount, DateTime chargeCreatedOn, bool isChargeCaptured, string payerType)
         {
             var payments = new List<patient_payments>();
             foreach (var item in transaction)
