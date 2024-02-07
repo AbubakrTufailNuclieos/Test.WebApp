@@ -62,5 +62,33 @@ namespace Test.WebApp.Controllers
 			//string dataQuery = data.
 			return Ok();
 		}
+
+		[HttpGet]
+		public async Task<IActionResult> SaveUser1()
+		{
+			User user = new()
+			{
+				Name = "Abid Ali",
+				Roles =
+				[
+					new(){Name = "Admin"},
+					new(){Name = "Manager"},
+					new(){Name = "CTO"},
+				],
+				Address = new ()
+				{
+					ParmanentAddress = "Gujranwala, Punjab, Pakistan.",
+					CurrentAddress = "Lahore, Punjab, Pakistan."
+				}
+			};
+			var data = await context.Users.Where(x => x.Name == "Abubakr").FirstOrDefaultAsync();
+			var data1 = await context.Users.FirstOrDefaultAsync(x => x.Name == "Abubakr");
+
+
+			await context.Users.AddAsync(user);
+			await context.SaveChangesAsync();
+			//string dataQuery = data.
+			return Ok();
+		}
 	}
 }
